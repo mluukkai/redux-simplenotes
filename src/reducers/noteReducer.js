@@ -1,9 +1,10 @@
 const initalState = [
-  { content: 'reduxin storen toiminnan määrittelee reduceri', important: true},
-  { content: 'storen tilassa voi olla mielivaltaista dataa', important: false}
+  { content: 'reduxin storen toiminnan määrittelee reduceri', important: true, id: 1},
+  { content: 'storen tilassa voi olla mielivaltaista dataa', important: false, id: 2}
 ]
 
 const noteReducer = (state = initalState, action) => {
+  console.log('ACTION: ',action)
   switch(action.type) {
     case 'NEW_NOTE':
       return [...state, action.data]
@@ -17,7 +18,6 @@ const noteReducer = (state = initalState, action) => {
     default: 
     return state
   }
-
 }
 
 const generateId = () => Number((Math.random() * 1000000).toFixed(0))

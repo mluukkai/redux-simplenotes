@@ -20,9 +20,20 @@ class NoteList extends React.Component {
     )
   }
   render() {
+    const notesToShow = () => {
+      const { notes, filter } = this.context.store.getState()
+      if (filter==='ALL') {
+        return notes
+      } 
+      
+      return filter==='IMPORTANT' 
+        ? notes.filter(note => note.important)
+        : notes.filter(note => !note.important)
+    }
+
     return (
       <ul>
-        {this.context.store.getState().map(note =>
+        {notesToShow().map(note =>
           <Note
             key={note.id}
             note={note}
