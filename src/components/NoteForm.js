@@ -1,5 +1,5 @@
 import React from 'react'
-import { noteCreation } from './../reducers/noteReducer'
+import { createNew } from './../reducers/noteReducer'
 import { connect } from 'react-redux'
 import noteService from '../services/notes'
 
@@ -9,9 +9,7 @@ class NoteForm extends React.Component {
     e.preventDefault()
     const content = e.target.note.value 
     e.target.note.value = ''
-    const newNote = await noteService.createNew(content)
-    this.props.noteCreation(newNote)
-   
+    this.props.createNew(content)
   }
 
   render() {
@@ -26,5 +24,5 @@ class NoteForm extends React.Component {
 
 export default connect(
   null,
-  {noteCreation}
+  { createNew}
 )(NoteForm)

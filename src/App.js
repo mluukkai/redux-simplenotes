@@ -3,14 +3,12 @@ import NoteForm from './components/NoteForm.js'
 import NoteList from './components/NoteList.js'
 import VisibilityFilter from './components/VisibilityFilter'
 import { connect } from 'react-redux'
-import { noteInitialization } from './reducers/noteReducer'
+import { initializeNotes } from './reducers/noteReducer'
 import noteService from './services/notes'
 
 class App extends React.Component {
   componentWillMount() {
-    noteService.getAll().then(notes =>
-      this.props.noteInitialization(notes)
-    )
+    this.props.initializeNotes()
   }
 
   render() {
@@ -24,4 +22,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { noteInitialization })(App)
+export default connect(null, { initializeNotes })(App)

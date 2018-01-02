@@ -1,5 +1,5 @@
 import React from 'react'
-import { importanceToggling } from './../reducers/noteReducer'
+import { toggleImportance } from './../reducers/noteReducer'
 import { connect } from 'react-redux'
 
 const Note = ({ note, handleClick }) => {
@@ -16,7 +16,7 @@ const NoteList = (props) => (
       <Note
         key={note.id}
         note={note}
-        handleClick={(e) => props.importanceToggling(note.id)}
+        handleClick={(e) => props.toggleImportance(note)}
       />
     )}
   </ul>
@@ -40,5 +40,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { importanceToggling }
+  { toggleImportance }
 )(NoteList)

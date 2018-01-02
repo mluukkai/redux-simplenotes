@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 import App from './App'
-import noteReducer, { noteInitialization} from './reducers/noteReducer'
+import noteReducer from './reducers/noteReducer'
 import filterReducer from './reducers/filterReducer'
 import noteService from './services/notes'
 
@@ -12,10 +13,9 @@ const reducer = combineReducers({
   filter: filterReducer
 })
 
-const store = createStore(reducer)
-
-noteService.getAll().then(notes =>
-  store.dispatch(noteInitialization(notes))
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk)
 )
 
 ReactDOM.render(
