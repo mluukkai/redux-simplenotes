@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "content": "reduxin storen toiminnan määrittelee reduceri",
+      "important": true,
+      "id": 1
+    },
+    {
+      "content": "storen tilassa voi olla mielivaltaista dataa",
+      "important": false,
+      "id": 2
+    }
+  ]
+}

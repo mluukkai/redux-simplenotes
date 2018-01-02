@@ -1,13 +1,17 @@
 import React from 'react'
 import { noteCreation } from './../reducers/noteReducer'
 import { connect } from 'react-redux'
+import noteService from '../services/notes'
 
 class NoteForm extends React.Component {
 
-  addNote = (e) => {
+  addNote = async (e) => {
     e.preventDefault()
-    this.props.noteCreation(e.target.note.value)
+    const content = e.target.note.value 
     e.target.note.value = ''
+    const newNote = await noteService.createNew(content)
+    this.props.noteCreation(newNote)
+   
   }
 
   render() {
