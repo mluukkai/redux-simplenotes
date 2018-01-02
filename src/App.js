@@ -7,7 +7,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <NoteForm />
+        <NoteForm/>
         <VisibilityFilter />
         <NoteList />
       </div>

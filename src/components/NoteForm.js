@@ -17,11 +17,10 @@ class NoteForm extends React.Component {
         <button>lisää</button>
       </form>
     )
-
   }
 }
 
 export default connect(
   null,
-  { noteCreation }
+  {noteCreation}
 )(NoteForm)
